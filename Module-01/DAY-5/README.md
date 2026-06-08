@@ -1,44 +1,53 @@
-# Ex.No:1(E)  STATIC VARIABLE
+# Ex.No:1(E) STRINGS AND MATH FUNCTION
+
+## QUESTION:
+Write a Java program to find the absolute value of a number using Math.abs().
 
 ## AIM:
-To write a Java program to print student details (name and age), where age is the same for all students. Use a static variable to represent the age and demonstrate its use in accessing a shared value across all class objects
+To write a Java program that finds the absolute value of a given number using the Math.abs() method.
 
 ## ALGORITHM :
-1.	Start the program.
-2.	Create a class named Student.
-3.	Declare a static variable age in the Student class.
-4.	Declare an instance variable name.
-5.	Create a constructor to initialize the student's name.
-6.	Define a method displayDetails() to print the student's name and age.
-7.	In the main method:
-I.	Assign a value to the static variable age.
-II.	Create multiple Student objects with different names.
-III.	Call the displayDetails() method for each student.
-8.	End the program.
+1.Start the program and create a Scanner object.
+
+2.Read a number n (can be integer or decimal) from the user.
+
+3.Use the built-in function Math.abs(n) to compute its absolute value.
+
+4.Display the calculated absolute value.
+
+5.End the program.
 
 
 
 ## PROGRAM:
  ```
 /*
-Program to implement a Static Variable using Java
-Developed by: 
-RegisterNumber:  
+Program to implement a Strings and Math Function using Java
+Developed by: KARTHIKEYAN S
+RegisterNumber: 212224230116
 */
 ```
 
-## Sourcecode.java:
 
-
-
-
-
+## SOURCE CODE:
+```py
+import java.util.*;
+public class demo
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        double n=sc.nextDouble();
+        System.out.println("Absolute value = "+Math.abs(n));
+    }
+}
+```
 
 
 ## OUTPUT:
+<img width="744" height="288" alt="image" src="https://github.com/user-attachments/assets/5fab9f43-7f0e-491d-bbad-5c3b7979703e" />
 
 
 
 ## RESULT:
-Thus, the Java program for the concept of using a static variable for shared data was correctly implemented and verified successfully. 
-
+Therefore the program successfully reads a number and calculates its absolute value.
