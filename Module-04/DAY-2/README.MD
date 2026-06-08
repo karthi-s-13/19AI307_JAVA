@@ -1,26 +1,36 @@
-# Ex.No:4(B) INTRODUCTION TO JAVA INHERITANCE
+# Ex.No:4(B)  IMPLEMENT SOLID PRINCIPLES IN JAVA PROGRAM 
+
+## QUESTION:
+In a gaming lounge, there is only one master console power switch that controls all gaming consoles. Whenever a player turns on any console, it internally triggers the master power. The master switch must ensure only one instance is ever created, regardless of how many times it's accessed, to prevent power fluctuations.
+
+Every time a player accesses the master switch, it logs an access count. Since the switch is Singleton, the count should increment globally and reflect shared state.
+
+Input Format:
+
+n [Player1] [Player2] ... First line: Integer n – number of players turning on consoles
+
+Next n lines: Each line contains the player's name.
+
+Output Format: For each player, print:
+
+[PlayerName] accessed Master Power Switch. Total accesses so far: [count]
+<img width="699" height="290" alt="image" src="https://github.com/user-attachments/assets/ca534bc2-a226-4b4e-ac9e-df492b81bcf2" />
+
+
 
 ## AIM:
-To create  a Java program to perform the inheritance concept for employee details.
+To implement a Singleton master power switch that logs shared access counts whenever players turn on their consoles.
 
 ## ALGORITHM :
-1.	Start the Program
-2.	Define class `Person`:
--	a) Declare `emp_id`, `name`, and `dept` as instance variables
-3.	Define class `Employee` that extends `Person`:
--	a) Define method `getDetails()`:
--	i) Create a `Scanner` object `sc`
--	ii) Read `name`, `emp_id`, and `dept` from user input
--	b) Define method `display()`:
--	i) Print the `name`, `emp_id`, and `dept`
-4.	Define `Main` class with `main` method:
--	a) Create an `Employee` object `emp`
--	b) Call `getDetails()` to input employee details
--	c) Call `display()` to output employee details
-5.	End
-
-
-
+1.	Start the program.
+2.	Import the necessary package 'java.util'
+3.	Read an integer n representing the number of players.
+4. For each of the n players:
+a. Read the player’s name.
+b. Access the singleton instance of MasterPowerSwitch using getInstance().
+c. Call logAccess() on the instance to increment and retrieve the total access count.
+d. Print the message: [PlayerName] accessed Master Power Switch. Total accesses so far: [count].
+5. End the program.
 
 
 
@@ -29,24 +39,60 @@ To create  a Java program to perform the inheritance concept for employee detail
 ## PROGRAM:
  ```
 /*
-Program to implement a Inheritance using Java
-Developed by: 
-RegisterNumber:  
+Program to implement a SOLID Principles in Java Program
+Developed by: KARTHIEKYAN S
+RegisterNumber:  212224230116
 */
 ```
 
-## Sourcecode.java:
+## SOURCE CODE:
 
+```java
+import java.util.*;
 
+class MasterPowerSwitch {
+    private static MasterPowerSwitch instance;
+    private int accessCount = 0;
+
+    private MasterPowerSwitch() {}
+
+    public static MasterPowerSwitch getInstance() {
+        if (instance == null) {
+            instance = new MasterPowerSwitch();
+        }
+        return instance;
+    }
+
+    public int logAccess() {
+        accessCount++;
+        return accessCount;
+    }
+}
+
+public class prog {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        for (int i = 0; i < n; i++) {
+            String player = sc.nextLine();
+            MasterPowerSwitch power = MasterPowerSwitch.getInstance();
+            int count = power.logAccess();
+            System.out.println(player + " accessed Master Power Switch. Total accesses so far: " + count);
+        }
+    }
+}
+```
 
 
 
 
 
 ## OUTPUT:
+<img width="1125" height="244" alt="image" src="https://github.com/user-attachments/assets/d669508b-411e-4872-bcfe-65ee12ffc772" />
 
 
 
 ## RESULT:
-Thus the Java program to implement the inheritance concept for employee details was  executed successfully.
-
+The program ensures a single shared instance, incrementing and displaying the total access count for each player.
