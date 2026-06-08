@@ -1,23 +1,24 @@
-# Ex.No:4(C)    CONSTRUCTOR CHAINING(SUPER KEYWORD)
+
+# Ex.No:4(C)  COMPOSITION IN JAVA
+
+## QUESTION:
+Create animals from two regions: "Africa" and "Asia". Use Abstract Factory to create families of animals (Herbivore, Carnivore). Print the interaction result.
+
+
 
 ## AIM:
-To Create a Java program to implement super keyword in constructor.
+To write a Java program demonstrating Composition and Abstract Factory Pattern by creating animal families of different regions and displaying interactions between herbivores and carnivores.
 
 ## ALGORITHM :
-1.  Start the Program.
-2.	Define class `College`:
--	a) Define method `display()` that prints "I am a Vehicle"
-3.	Define class `Student` that extends `College`:
--	a) Override method `display()` to print "I am a Car"
--	b) Define method `print()`:
--	i) Call `super.display()` to invoke `display()` from `College` class
--	ii) Call `this.display()` to invoke `display()` from `Student` class
-4.	Define `Main` class with `main` method:
--	a) Create a `Student` object `sc`
--	b) Call `sc.print()` to execute the `print()` method
-5.	End
-
-
+1.	Start the program.
+2.	Import the necessary package 'java.util'
+3.	Create interfaces Herbivore and Carnivore.
+4. Create concrete animal classes (e.g., Wildebeest, Lion, Deer, Tiger) implementing those interfaces.
+5. Create an abstract factory class for producing families of animals.
+6. Implement region-based factories (AfricaFactory, AsiaFactory).
+7. In the main program, instantiate factories and show interactions.
+8. Print the result.
+9. Stop the program.
 
 
 
@@ -26,14 +27,69 @@ To Create a Java program to implement super keyword in constructor.
 ## PROGRAM:
  ```
 /*
-Program to implement a Constructor Chaining using Java
-Developed by: 
-RegisterNumber:  
+Program to implement a Composition Concepts in Java
+Developed by: KARTHIKEYAN S
+RegisterNumber:  212224230116
 */
 ```
 
-## Sourcecode.java:
+## SOURCE CODE:
+```java
+import java.util.Scanner;
 
+interface Herbivore {}
+interface Carnivore {
+    void eat(Herbivore h);
+}
+
+class Wildebeest implements Herbivore {}
+class Lion implements Carnivore {
+    public void eat(Herbivore h) {
+        System.out.println("Lion eats Wildebeest");
+    }
+}
+
+class Buffalo implements Herbivore {}
+class Tiger implements Carnivore {
+    public void eat(Herbivore h) {
+        System.out.println("Tiger eats Buffalo");
+    }
+}
+
+interface AnimalFactory {
+    Herbivore createHerbivore();
+    Carnivore createCarnivore();
+}
+
+class AfricaFactory implements AnimalFactory {
+    public Herbivore createHerbivore() { return new Wildebeest(); }
+    public Carnivore createCarnivore() { return new Lion(); }
+}
+
+class AsiaFactory implements AnimalFactory {
+    public Herbivore createHerbivore() { return new Buffalo(); }
+    public Carnivore createCarnivore() { return new Tiger(); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String region = sc.nextLine().toLowerCase();
+        AnimalFactory factory;
+
+        if (region.equals("africa")) factory = new AfricaFactory();
+        else if (region.equals("asia")) factory = new AsiaFactory();
+        else {
+            System.out.println("Invalid region");
+            return;
+        }
+
+        Carnivore carn = factory.createCarnivore();
+        Herbivore herb = factory.createHerbivore();
+        carn.eat(herb);
+    }
+}
+```
 
 
 
@@ -41,12 +97,9 @@ RegisterNumber:
 
 
 ## OUTPUT:
+<img width="467" height="201" alt="image" src="https://github.com/user-attachments/assets/5e9f9305-c186-4e41-b199-7723f55f9de3" />
 
 
 
 ## RESULT:
-Thus the java program for constructor chaining was executed successfully.
-
-
-
-
+Thus, the program using Composition and Abstract Factory Pattern was successfully implemented and executed to create animal interactions for African and Asian regions.
