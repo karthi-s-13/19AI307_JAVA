@@ -1,18 +1,21 @@
-# Ex.No:2(A)  STATIC METHOD
+# Ex.No:2(A) CLASS AND OBJECT
+
+## QUESTION:
+Define a class Teacher with attributes: name (String), subject (String), and experience (int, years).
 
 ## AIM:
-To create a java program for calculate cube of a number using static method.
+To define a Java class named Teacher with attributes name, subject, and experience, and to demonstrate how to create an object of this class and display the details.
 
 ## ALGORITHM :
-1.  Start : Begin the process of calculating the cube of a number.
-2.	Declare a variable to store input : Declare an integer variable n to hold the number whose cube will be calculated.
-3.	Create a Scanner object : Create a Scanner object (sc) to read the input from the user.
-4.	Read input from the user : Prompt the user to input an integer value. The input value is stored in the variable n.
-5.	Call the cubecal function : Call the function cubecal(n) which computes the cube of the number by performing n * n * n.
-6.	Store the result : Store the result of the cubecal function in an integer variable result.
-7.	Output the result :
-8.	Print the cube of the number using System.out.println("Cube is: " + result);.
-9.	End the program.
+1.	Start the program.
+2.	Import the necessary package 'java.util'
+3.	Define a class Teacher with the following attributes:name (String),subject (String),experience (int,years)
+4.	Create a constructor to initialize these attributes.
+5.	Create an object of the Teacher class in the main method.
+6.	Display the teacher’s details using print statements.
+7.	End the program.
+
+
 
 
 
@@ -20,24 +23,49 @@ To create a java program for calculate cube of a number using static method.
 ## PROGRAM:
  ```
 /*
-Program to implement a Static method using Java
-Developed by: 
-RegisterNumber:  
+Program to implement a Class and Objects using Java
+Developed by: KARTHIKEYAN S
+RegisterNumber:  212224230116
 */
 ```
 
-## Sourcecode.java:
+## SOURCE CODE:
 
-
+```java
+import java.util.*;
+class Teacher
+{
+    String name;
+    String subject;
+    int experience;  
+    void print()
+    {
+        System.out.println("Mr. " + name + " teaches " + subject + " and has " + experience + " years experience.");
+    }
+}
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        Teacher obj = new Teacher();
+        obj.name = sc.nextLine();
+        obj.subject = sc.nextLine();
+        obj.experience = sc.nextInt();
+        obj.print();
+    }
+}
+```
 
 
 
 
 
 ## OUTPUT:
+<img width="1157" height="296" alt="image" src="https://github.com/user-attachments/assets/78c5c2fc-81bf-434c-b5b9-ff7434685a67" />
 
 
 
 ## RESULT:
-Thus the java program for calculate cube of a number using static method has been executed successfully.
+The program successfully defines a Teacher class with attributes for name, subject, and experience, creates an object with the given values, and displays the teacher’s details correctly.
 
