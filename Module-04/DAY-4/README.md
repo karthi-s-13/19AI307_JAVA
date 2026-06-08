@@ -1,25 +1,24 @@
-# Ex.No:4(D) FINAL & STATIC IN JAVA
+
+# Ex.No:4(D) DESIGN PATTERN -- ABSTRACT FACTORY
+
+## QUESTION:
+You are asked to simulate a simple Shape Drawing Tool using the Factory Design Pattern in Java.
+
+You will implement a Shape interface with concrete classes for different shapes (Circle, Square, Rectangle). Using a ShapeFactory, your program will take shape names from user input and draw them accordingly. If the shape is unknown, print an error message.
 
 ## AIM:
-   To create a Java program to perform final & static keyword for below situation Employee object contains member 'Emp_Id'. It contains object named name, which contains its own informations such as Fname, Mname, Lname.
- 
-## ALGORITHM :
-1.	Start the Program.
-2.	Define class `Name`:
--	a) Declare three `String` variables: `Fname`, `Mname`, and `Lname`
--	b) Define method `dispName(String fn, String mn, String ln)`:
--	i) Print the full name using the passed parameters `fn`, `mn`, and `ln`
-3.	Define class `Employee`:
--	a) Declare an integer variable `Emp_Id`
--	b) Create an instance of `Name` called `obj`
--	c) Define method `disp(int id)`:
--	i) Print the employee ID
--	ii) Create a new `Name` object and call `dispName("B", "Leo", "John")` to display the name
-4.	Define `Main` class with `main` method:
--	a) Create an `Employee` object `emp`
--	b) Call `emp.disp(101)` to display the employee details
-5.	End
+To write a Java program that implements the Factory Design Pattern to create and draw shapes dynamically based on user input.
 
+## ALGORITHM :
+1.	Start the program.
+2.	Import the necessary package 'java.util'
+3.	Create a Shape interface containing a draw() method.
+4. Create concrete classes Circle, Square, and Rectangle implementing Shape.
+5. Create a ShapeFactory class with a method getShape(String shapeType).
+6. In the main() method, accept user input for shape type.
+7. Call factory method to get the appropriate object.
+8. Draw the shape or print error if unknown.
+9. Stop the program.	
 
 
 
@@ -28,23 +27,89 @@
 ## PROGRAM:
  ```
 /*
-Program to implement a final & Static using Java
-Developed by: 
-RegisterNumber:  
+Program to implement a Abstract Factory Pattern using Java
+Developed by: KARTHIKEYAN S
+RegisterNumber:  212224230116
 */
 ```
 
-## Sourcecode.java:
+## SOURCE CODE:
 
+```java
+import java.util.Scanner;
 
+interface Shape {
+    void draw();
+}
+
+class Circle implements Shape {
+    public void draw() {
+        System.out.println("Drawing Circle");
+    }
+}
+
+class Square implements Shape {
+    public void draw() {
+        System.out.println("Drawing Square");
+    }
+}
+
+class Rectangle implements Shape {
+    public void draw() {
+        System.out.println("Drawing Rectangle");
+    }
+}
+
+class ShapeFactory {
+    public Shape getShape(String shapeType) {
+        if (shapeType == null) {
+            return null;
+        }
+        switch (shapeType.toLowerCase()) {
+            case "circle":
+                return new Circle();
+            case "square":
+                return new Square();
+            case "rectangle":
+                return new Rectangle();
+            default:
+                return null;
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ShapeFactory factory = new ShapeFactory();
+        
+        while (true) {
+            String input = sc.nextLine().trim();
+            if (input.equalsIgnoreCase("exit")) {
+                break;
+            }
+            
+            Shape shape = factory.getShape(input);
+            if (shape != null) {
+                shape.draw();
+            } else {
+                System.out.println("Invalid shape: " + input);
+            }
+        }
+        sc.close();
+    }
+}
+```
 
 
 
 
 
 ## OUTPUT:
+<img width="657" height="470" alt="image" src="https://github.com/user-attachments/assets/552c59e2-0301-4187-9149-446c52b3c02e" />
 
 
 
 ## RESULT:
-Thus, the java program to perform final & static keyword was executed successfully.
+Thus, the Java program to simulate Shape Drawing using the Factory Design Pattern was successfully implemented and executed.
+
